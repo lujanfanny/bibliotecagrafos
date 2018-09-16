@@ -23,10 +23,14 @@ public class ADA_project {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Graph g = new Graph(5,2);
+        Graph g = new Graph(100,2000);
         AlgorithmsND.Erdos(g, false);
-        
+        //Graph g2 = new Graph(100,2);
+        //AlgorithmsND.Geografico(g2, true, 0.5);
+                
         PrintFile(g);
+        
+        
     }
 
     private static void PrintFile(Graph g) {

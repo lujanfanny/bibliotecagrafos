@@ -71,7 +71,7 @@ public class AlgorithmsND {
 
     }
 
-    public static void Geografico(Graph g, boolean self, int r) {
+    public static void Geografico(Graph g, boolean self, double r) {
         HashMap<Integer, Node> nodes = new HashMap<>();
         HashMap<String, Edge> edges = new HashMap<>();
         Random rnd = new Random();
