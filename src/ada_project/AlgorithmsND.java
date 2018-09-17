@@ -104,34 +104,9 @@ public class AlgorithmsND {
         System.out.println();
 
     }
- }   
-
-//   public static void Barabasi(Graph g, boolean self) {
-//        HashMap<Integer, Node> nodes = new HashMap<>();
-//        HashMap<String, Edge> edges = new HashMap<>();
-//        Random rnd = new Random();
+ }  
+//public static void Barabasi(Graph g, boolean self) {
+//HashMap<Integer, Node> nodes = new HashMap<>();
+//HashMap<String, Edge> edges = new HashMap<>();}
 //        int n = g.n;
 //        int d = g.m;
-//        //Agregar nodos iniciales con conexiones rnd
-//        for (int i = 0; i < m; i++){
-//            nodes.put(i, new Node("n" + i));
-//        }
-//        for (int i = 0; i < n; i++) {
-//            int x = 0;
-//            if (!self) {
-//                x = i + 1;
-//            }
-//
-//            for (int j = x; j < n; j++) {
-//
-//                if (Math.random() <= p) {
-//                    edges.put(nodes.get(i).name + "--" + nodes.get(j).name, new Edge("e" + i));
-//                }
-//        
-//        }
-//
-//    }
-//    g.setEdges(edges);
-//        g.setNodes(nodes);
-//        System.out.println();
-//}
