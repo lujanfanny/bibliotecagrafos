@@ -111,17 +111,17 @@ public class AlgorithmsND {
         int n = g.n;
         double p = 0;
 
-       for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             nodes.put(i, new Node("n" + i));
         }
-       
+
         int xx = 0;
         if (d > 0) {
             for (int i = 0; i < n; i++) {
                 int j = 0;
-                while (j <= i && (nodes.get(i).degree <= d)) {
+                while (j <= i && (nodes.get(i).retDegree() <= d)) {
                     if (j != i || self) {
-                        p = 1 - (nodes.get(j).degree / d);
+                        p = 1 - (nodes.get(j).retDegree() / d);
                         if (Math.random() <= p) {
                             edges.put(nodes.get(i).name + "--" + nodes.get(j).name, new Edge("e" + i));
                             nodes.get(i).degree++;
@@ -138,4 +138,5 @@ public class AlgorithmsND {
         g.setEdges(edges);
         g.setNodes(nodes);
         System.out.println();
-    }}
+    }
+}

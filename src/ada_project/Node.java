@@ -23,5 +23,8 @@ public class Node {
         this.x = x;
         this.y = y;
     }
+    public int retDegree() {
+        return degree;
+}
             
 }

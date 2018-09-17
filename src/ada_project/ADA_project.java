@@ -23,8 +23,8 @@ public class ADA_project {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Graph g = new Graph(500,2000);
-        AlgorithmsND.Barabasi(g, false, 500);
+        Graph g = new Graph(500, 20);
+        AlgorithmsND.Barabasi(g, true, 20);
         //Graph g2 = new Graph(100,2);
         //AlgorithmsND.Geografico(g2, true, 0.5);
                 
