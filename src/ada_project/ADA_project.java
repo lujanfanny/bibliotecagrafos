@@ -24,7 +24,7 @@ public class ADA_project {
      */
     public static void main(String[] args) {
         Graph g = new Graph(500,2000);
-        AlgorithmsND.Erdos(g, false);
+        AlgorithmsND.Barabasi(g, false, 500);
         //Graph g2 = new Graph(100,2);
         //AlgorithmsND.Geografico(g2, true, 0.5);
                 

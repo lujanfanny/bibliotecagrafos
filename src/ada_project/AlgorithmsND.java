@@ -104,9 +104,38 @@ public class AlgorithmsND {
         System.out.println();
 
     }
- }  
-//public static void Barabasi(Graph g, boolean self) {
-//HashMap<Integer, Node> nodes = new HashMap<>();
-//HashMap<String, Edge> edges = new HashMap<>();}
-//        int n = g.n;
-//        int d = g.m;
+
+    public static void Barabasi(Graph g, boolean self, double d) {
+        HashMap<Integer, Node> nodes = new HashMap<>();
+        HashMap<String, Edge> edges = new HashMap<>();
+        int n = g.n;
+        double p = 0;
+
+       for (int i = 0; i < n; i++) {
+            nodes.put(i, new Node("n" + i));
+        }
+       
+        int xx = 0;
+        if (d > 0) {
+            for (int i = 0; i < n; i++) {
+                int j = 0;
+                while (j <= i && (nodes.get(i).degree <= d)) {
+                    if (j != i || self) {
+                        p = 1 - (nodes.get(j).degree / d);
+                        if (Math.random() <= p) {
+                            edges.put(nodes.get(i).name + "--" + nodes.get(j).name, new Edge("e" + i));
+                            nodes.get(i).degree++;
+                            if (j != i) {
+                                nodes.get(j).degree++;
+                            }
+                            xx++;
+                        }
+                    }
+                    j++;
+                }
+            }
+        }
+        g.setEdges(edges);
+        g.setNodes(nodes);
+        System.out.println();
+    }}
