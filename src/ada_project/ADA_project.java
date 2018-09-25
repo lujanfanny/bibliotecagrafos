@@ -8,6 +8,7 @@ package ada_project;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
@@ -23,12 +24,16 @@ public class ADA_project {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Graph g = new Graph(500, 20);
-        AlgorithmsND.Barabasi(g, true, 20);
+        Graph g = AlgorithmsND.Erdos(30, 30, true);
+        Graph g2 = AlgorithmsND.DFSI(g, 0);
+    //    Graph g2 = AlgorithmsND.BFS(g, 0);
+   //     Graph g2 = AlgorithmsND.DFSR(g, 3, new boolean[g.getN()]);
+        //AlgorithmsND.Barabasi(g, true, 20);
+  //      Alg_BFS_DFS.BFS(g1, 0);
         //Graph g2 = new Graph(100,2);
         //AlgorithmsND.Geografico(g2, true, 0.5);
                 
-        PrintFile(g);
+        PrintFile(g2);
         
         
     }
@@ -36,15 +41,16 @@ public class ADA_project {
     private static void PrintFile(Graph g) {
         try {
             File f = new File("grafo.gv");
-            String struct = "graph G1 {\n";
+            String struct = "graph g2 {\n";
             Iterator<Map.Entry<Integer, Node>>  it2 = g.getNodes().entrySet().iterator();
             while (it2.hasNext()) {
-                struct += it2.next().getValue().name+ ";\n";
+                struct += it2.next().getKey()+ ";\n";
             }
             struct += "\n";
-            Iterator<Map.Entry<String, Edge>> it = g.getEdges().entrySet().iterator();
+            Iterator<Map.Entry<Integer, Edge>> it = g.getEdges().entrySet().iterator();
             while (it.hasNext()) {
-                struct += it.next().getKey() + ";\n";
+                 Map.Entry<Integer, Edge> edge = it.next();
+                struct += ""+edge.getKey()+"--"+ edge.getValue().getN2()+";\n";
             }
             struct += "}";
             

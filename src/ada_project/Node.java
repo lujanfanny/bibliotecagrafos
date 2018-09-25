@@ -13,9 +13,13 @@ public class Node {
     int degree;
     String name;
     double x,y;
+    public int ivalue;
 
     public Node(String name) {
         this.name = name;
+        this.degree = 0;
+        this.ivalue =Integer.parseInt(name.substring(1, name.length()));
+        
     }
 
     public Node(String name, double x, double y) {
@@ -26,5 +30,7 @@ public class Node {
     public int retDegree() {
         return degree;
 }
-            
+       public int getivalue() {
+        return ivalue;
+    }     
 }

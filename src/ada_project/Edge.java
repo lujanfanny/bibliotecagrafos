@@ -11,10 +11,29 @@ package ada_project;
  */
 public class Edge {
     String name;
+    private int n1,n2;
     boolean selfassign;
 
-    public Edge(String name) {
-        this.name = name;
+    public Edge(int n2) {
+        this.n2 = n2;
+        
     }
+
+    Edge(String name, int n1,int n2) {
+        this.name = name;
+        this.n1 = n1;
+        this.n2 = n2;
+          }
+
+
+    public int getN2() {
+        return n2;
+    }
+    
+    public int getN1() {
+        return n1;
+    }
+    
+    
     
 }

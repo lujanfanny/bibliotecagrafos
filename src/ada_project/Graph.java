@@ -6,16 +6,19 @@
 package ada_project;
 
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  *
  * @author fanny
  */
 public class Graph {
-    HashMap <Integer, Node> nodes = new HashMap<>();
-    HashMap <String, Edge> edges = new HashMap<>();
+    private HashMap <Integer, Node> nodes = new HashMap<>();
+    private HashMap <Integer, Edge> edges = new HashMap<>();
     boolean directed = false;
     public int m,n;
+    private boolean b;
+    private boolean [][] AdjMatrix;
 
     public Graph(boolean directed, int n, int m) {
         this.directed = directed;
@@ -28,6 +31,26 @@ public class Graph {
         this.n = n;
         
     }
+    
+    
+    public Graph(HashMap <Integer, Node> nodes, HashMap<Integer, Edge> edges){
+        this.nodes = nodes;
+    this.edges = edges;
+    this.n = nodes.size();
+    this.m = edges.size();
+    }
+
+    Graph(boolean b, int n, HashMap<Integer, Node> nodes, HashMap<Integer, Edge> edges) {
+         this.b = false;
+         this.n = n;
+         this.m = edges.size();
+         this.nodes = nodes;
+         this.edges = edges;
+    }
+
+
+  
+   
 
     public HashMap<Integer, Node> getNodes() {
         return nodes;
@@ -37,16 +60,21 @@ public class Graph {
         this.nodes = nodes;
     }
 
-    public HashMap<String, Edge> getEdges() {
+    public HashMap<Integer, Edge> getEdges() {
         return edges;
     }
 
-    public void setEdges(HashMap<String, Edge> edges) {
+    public void setEdges(HashMap<Integer, Edge> edges) {
         this.edges = edges;
     }
     
-    
+      public int getN() {
+        return n;
+      }
 
+    boolean[][] getAdjMatrix() {
+        return AdjMatrix;
+    }
     
     
 }
