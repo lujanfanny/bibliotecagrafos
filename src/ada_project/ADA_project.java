@@ -24,10 +24,10 @@ public class ADA_project {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Graph g = AlgorithmsND.Erdos(30, 30, true);
-        Graph g2 = AlgorithmsND.DFSI(g, 0);
-    //    Graph g2 = AlgorithmsND.BFS(g, 0);
-   //     Graph g2 = AlgorithmsND.DFSR(g, 3, new boolean[g.getN()]);
+        Graph g = AlgorithmsND.Barabasi(500, true, 10);
+  //  Graph g2 = AlgorithmsND.DFSI(g, 0); //***
+     //  Graph g2 = AlgorithmsND.BFS(g, 0);
+  Graph g2 = AlgorithmsND.DFSR(g, 0, new boolean[g.getN()]);
         //AlgorithmsND.Barabasi(g, true, 20);
   //      Alg_BFS_DFS.BFS(g1, 0);
         //Graph g2 = new Graph(100,2);
@@ -38,16 +38,16 @@ public class ADA_project {
         
     }
 
-    private static void PrintFile(Graph g) {
+    private static void PrintFile(Graph g2) {
         try {
             File f = new File("grafo.gv");
             String struct = "graph g2 {\n";
-            Iterator<Map.Entry<Integer, Node>>  it2 = g.getNodes().entrySet().iterator();
+            Iterator<Map.Entry<Integer, Node>>  it2 = g2.getNodes().entrySet().iterator();
             while (it2.hasNext()) {
                 struct += it2.next().getKey()+ ";\n";
             }
             struct += "\n";
-            Iterator<Map.Entry<Integer, Edge>> it = g.getEdges().entrySet().iterator();
+            Iterator<Map.Entry<Integer, Edge>> it = g2.getEdges().entrySet().iterator();
             while (it.hasNext()) {
                  Map.Entry<Integer, Edge> edge = it.next();
                 struct += ""+edge.getKey()+"--"+ edge.getValue().getN2()+";\n";

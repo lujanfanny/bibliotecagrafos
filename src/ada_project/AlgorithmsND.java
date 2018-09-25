@@ -142,11 +142,11 @@ public class AlgorithmsND {
     }
 
     public static Graph BFS(Graph g, int s) {
-        HashMap<Integer, Edge> edges = new HashMap<>();
         //Crear lista de capa de padres
         LinkedList<LinkedList<Node>> padre = new LinkedList<>();
-        //Marcar  todos los nodos como no visitados, estan en falso
-        boolean visited[] = new boolean[g.getNodes().size()];
+        HashMap<Integer, Edge> edges = new HashMap<>();
+         //Marcar  todos los nodos como no visitados, estan en falso
+        boolean[] visited = new boolean[g.getNodes().size()];
         visited[s] = true;
         //se le agrega valor cero a la capa padre
           padre.add(new LinkedList<>());
@@ -190,7 +190,7 @@ public static Graph DFSI(Graph g, int s){
         boolean[] visited = new boolean[g.getN()];
         nod.add(g.getNodes().get(s));
         ArrayList<Integer> ed = new ArrayList<>();
-        Iterator<Map.Entry<Integer, Edge>> it;
+        Iterator<Map.Entry<Integer, Edge>> MapEntry;
         int[] padre = new int[g.getN()];
         int j =0;
         while (!nod.isEmpty()) {
@@ -204,16 +204,15 @@ public static Graph DFSI(Graph g, int s){
             edges.put(n0+padre[0], new Edge("e"+j++,n0,padre[n0]));
             
             }
-            it = g.getEdges().entrySet().iterator();
-            while (it.hasNext()) {
-                    Map.Entry<Integer, Edge> edge = it.next();
-                    Edge e = edge.getValue();
-                    if (n0 == e.getN1() && !visited[e.getN2()]) {
-                        nod.addFirst(g.getNodes().get(e.getN2()));
-                        padre[e.getN2()] = n0;
-                    } else if (n0 == e.getN2() && !visited[e.getN1()]) {
-                        nod.addFirst(g.getNodes().get(e.getN1()));
-                        padre[e.getN1()] = n0;
+            MapEntry = g.getEdges().entrySet().iterator();
+            while (MapEntry.hasNext()) {
+                    Map.Entry<Integer, Edge> edge = MapEntry.next();
+                    if (n0 == edge.getValue().getN1() && !visited[edge.getValue().getN2()]) {
+                        nod.addFirst(g.getNodes().get(edge.getValue().getN2()));
+                        padre[edge.getValue().getN2()] = n0;
+                    } else if (n0 == edge.getValue().getN2() && !visited[edge.getValue().getN1()]) {
+                        nod.addFirst(g.getNodes().get(edge.getValue().getN1()));
+                        padre[edge.getValue().getN1()] = n0;
             
             }
     
