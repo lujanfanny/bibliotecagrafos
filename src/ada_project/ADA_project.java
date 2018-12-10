@@ -24,16 +24,17 @@ public class ADA_project {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Graph g = AlgorithmsND.Barabasi(500, true, 10);
-  //  Graph g2 = AlgorithmsND.DFSI(g, 0); //***
-     //  Graph g2 = AlgorithmsND.BFS(g, 0);
-  Graph g2 = AlgorithmsND.DFSR(g, 0, new boolean[g.getN()]);
+        Graph g = AlgorithmsND.Geografico(200, true, 50);
+        Graph g2 = AlgorithmsND.EdgeValues(g, 2, 100);
+//   Graph g3 = AlgorithmsND.Dijkstra(g2, 2); //***
+      
+//  Graph g4 = AlgorithmsND.Dijkstra(g2, 2);
         //AlgorithmsND.Barabasi(g, true, 20);
   //      Alg_BFS_DFS.BFS(g1, 0);
         //Graph g2 = new Graph(100,2);
         //AlgorithmsND.Geografico(g2, true, 0.5);
                 
-        PrintFile(g2);
+//        PrintFile(g3);
         
         
     }

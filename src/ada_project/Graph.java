@@ -6,13 +6,21 @@
 package ada_project;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Objects;
+import java.util.PriorityQueue;
 import java.util.Random;
 
 /**
  *
  * @author fanny
  */
+
 public class Graph {
+
+    
     private HashMap <Integer, Node> nodes = new HashMap<>();
     private HashMap <Integer, Edge> edges = new HashMap<>();
     boolean directed = false;
@@ -75,6 +83,12 @@ public class Graph {
     boolean[][] getAdjMatrix() {
         return AdjMatrix;
     }
+
     
     
+    
+    
+
+   
 }
+    

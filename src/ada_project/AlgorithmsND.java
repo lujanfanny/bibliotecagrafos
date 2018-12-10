@@ -6,12 +6,14 @@
 package ada_project;
 
 import java.util.ArrayList;
-import java.util.Deque;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.PriorityQueue;
 import java.util.Random;
 
 /**
@@ -19,6 +21,8 @@ import java.util.Random;
  * @author fanny
  */
 public class AlgorithmsND {
+    
+    
 
     public static Graph Erdos(int n, int m, boolean self) {
         HashMap<Integer, Node> nodes = new HashMap<>();
@@ -200,10 +204,7 @@ public static Graph DFSI(Graph g, int s){
                 ed.add(n0);
                 visited[n0] = true;
             }
-            if(n0 != s){
-            edges.put(n0+padre[0], new Edge("e"+j++,n0,padre[n0]));
-            
-            }
+           
             MapEntry = g.getEdges().entrySet().iterator();
             while (MapEntry.hasNext()) {
                     Map.Entry<Integer, Edge> edge = MapEntry.next();
@@ -222,8 +223,7 @@ public static Graph DFSI(Graph g, int s){
         return g2;
         }
        
-        
-        
+       
 
 
 private static HashMap<Integer, Edge> DFSRedges = new HashMap<>();
@@ -250,4 +250,78 @@ private static HashMap<Integer, Edge> DFSRedges = new HashMap<>();
         Graph t = new Graph(false, g.getN(), g.getNodes(), DFSRedges);
         return t;
     }
+
+    public static Graph EdgeValues (Graph g, double min, double max){
+       Iterator<Map.Entry<Integer, Edge>> it = g.getEdges().entrySet().iterator();
+        Random rnd = new Random();
+        while (it.hasNext()) {
+          double value = (rnd.nextDouble() * (max - min)) + min;
+it.next().getValue().setWeight(value);  
+          }
+              
+return g;
+            
+}
+  
+   public static Graph Dijkstra(Graph g, int s) {
+       
+      //distance[s] = 0
+      g.getNodes().get(s).setDistance(0);
+      //create node queue Q
+      PriorityQueue<Node> pq = new PriorityQueue <>();
+      pq.add(g.getNodes().get(s));
+ Iterator<Map.Entry<Integer, Edge>> it = (Iterator<Map.Entry<Integer, Edge>>) g.getEdges().entrySet();
+      //for n in G
+            //distance[n]=inf
+            //ancestor[n] = undefined // previous node in the shortes path
+            //add n to Q
+            
+             //while Q not empty
+            //u = node in Q with min distance 
+            //remove u from Q
+            while(!pq.isEmpty()){
+            Node actualnode = pq.poll(); 
+            for (Edge edge : actualnode.getAdjacenciesList() ){
+              Node v = edge.getTargetnodo();
+              double newDistance = actualnode.getDistance() + edge.getWeight();
+                //for each neighbor v of u
+                //tempDist = distance[u] + disBetween(u,v)
+                //if tempDist < distance[v]
+                    //distance[v] = tempDist
+                    //ancestor[v]=u
+//return distanc[] //contains the shortest distances from s to others 
+ HashMap<Integer, Edge> edges = new HashMap<>();
+        LinkedList<Node> nod = new LinkedList<>();
+              if(newDistance< v.getDistance()){
+              pq.remove(v);
+              v.setDistance(newDistance);
+              v.setAncestor(actualnode);
+              pq.add(v);
+              }
+            }
+            }
+        return null;
+
+    /**
+     *
+     * @param Targetnodo
+     * @return
+     */
+ /*public List<Node> getShortestPathTo (Node Targetnodo){
+        List<Node> shortestPathToTarget = new ArrayList<>();
+        for(Node node = Targetnodo;node !=null; node=node.getAncestor()){
+            shortestPathToTarget.add(node);
+        }
+          Collections.reverse(shortestPathToTarget); 
+          return shortestPathToTarget;
+        }
+ /*
+ Graph g2 = new Graph(false, g.getN(), g.getNodes(), edges);
+        return g2;
+ */          
+}
+   
+   public static Graph Kruskal(Graph g){
+   return null;
+   }
 }
